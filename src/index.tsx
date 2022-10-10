@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./pages/Header";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import CreateEmployee from "./pages/CreateEmployee";
+import EmployeeList from "./pages/EmployeeList";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,9 +14,10 @@ root.render(
     <Router>
       <Header />
       <Routes>
-        <Route path="/signIn" element={<div></div>}></Route>
+        <Route path="/create-employee" element={<CreateEmployee />}></Route>
+        <Route path="/employee-list" element={<EmployeeList />}></Route>
 
-        {/*<Route path="*" element={<Home />} />*/}
+        <Route path="*" element={<CreateEmployee />} />
       </Routes>
       {/*<Footer />*/}
     </Router>
