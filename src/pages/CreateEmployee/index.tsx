@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "../../utils/hooks";
+import { useForm, useModal } from "../../utils/hooks";
 import { InputData, SelectData } from "../../utils/models/employee.interface";
 import "./index.scss";
 import DatePicker from "react-datepicker";
@@ -16,10 +16,13 @@ import {
 import { template } from "./template";
 import { setEmployee } from "../../features/employee/employee";
 import { useAppDispatch } from "../../utils/store";
+import "react-modal-typescript-custom/dist/index.css";
+import { Modal } from "react-modal-typescript-custom";
 
 const CreateEmployee = () => {
   const dispatch = useAppDispatch();
   const { onChange, values, setValues } = useForm(initialState);
+  const { isShowing, toggleShowing } = useModal();
 
   const createEmployee = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -30,6 +33,8 @@ const CreateEmployee = () => {
         startDate: formatDateToString(values.startDate),
       })
     );
+    toggleShowing();
+
     setValues(initialState);
   };
 
@@ -88,6 +93,13 @@ const CreateEmployee = () => {
     </div>
   );
 
-  return template(createEmployee, inputText, inputDate, inputSelect);
+  return (
+    <>
+      <div> {template(createEmployee, inputText, inputDate, inputSelect)}</div>
+      <Modal isShowing={isShowing} onRequestClose={toggleShowing}>
+        <div>Employee Created!</div>
+      </Modal>
+    </>
+  );
 };
 export default CreateEmployee;

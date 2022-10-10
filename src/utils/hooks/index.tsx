@@ -22,3 +22,16 @@ export const useForm = (
     setValues,
   };
 };
+
+export const useModal = () => {
+  const [isShowing, setIsShowing] = useState(false);
+
+  const toggleShowing = () => {
+    setIsShowing(!isShowing);
+  };
+
+  return {
+    isShowing,
+    toggleShowing,
+  };
+};
