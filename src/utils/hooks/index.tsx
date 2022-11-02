@@ -10,6 +10,7 @@ export const useForm = (
 ): {
   onChange: (data: InputValue) => void;
   values: any;
+  setValues: any;
 } => {
   const [values, setValues] = useState(initialState);
   const onChange = (data: InputValue) =>
@@ -18,5 +19,6 @@ export const useForm = (
   return {
     onChange,
     values,
+    setValues,
   };
 };

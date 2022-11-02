@@ -1,5 +1,4 @@
 import { departments, states } from "../../utils/datas/datas";
-import { initialState } from "./helper";
 import React from "react";
 import { InputData, SelectData } from "../../utils/models/employee.interface";
 

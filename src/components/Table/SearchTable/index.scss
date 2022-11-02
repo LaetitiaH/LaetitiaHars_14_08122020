@@ -1,0 +1,14 @@
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+
+  label {
+    margin-right: 5px;
+    font-size: 14px;
+  }
+
+  span {
+    margin-left: 5px;
+    font-size: 14px;
+  }
+}

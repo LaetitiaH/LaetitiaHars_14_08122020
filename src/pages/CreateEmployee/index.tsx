@@ -8,24 +8,36 @@ import Select from "react-select";
 import {
   customStyles,
   dateFormatted,
+  formatDateToString,
   initialState,
   inputFormatted,
   selectFormatted,
 } from "./helper";
 import { template } from "./template";
+import { setEmployee } from "../../features/employee/employee";
+import { useAppDispatch } from "../../utils/store";
 
 const CreateEmployee = () => {
-  const { onChange, values } = useForm(initialState);
+  const dispatch = useAppDispatch();
+  const { onChange, values, setValues } = useForm(initialState);
 
-  const createEmployee = (event: React.FormEvent<HTMLFormElement>) => {
+  const createEmployee = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    dispatch(
+      setEmployee({
+        ...values,
+        birthDate: formatDateToString(values.birthDate),
+        startDate: formatDateToString(values.startDate),
+      })
+    );
+    setValues(initialState);
   };
 
   const inputText = (
     input: InputData,
     type: "text" | "number" = "text",
     className: string = ""
-  ) => (
+  ): JSX.Element => (
     <div className="employee-container">
       <label htmlFor={input.name} className="create-employee-label">
         {input.label}
@@ -37,12 +49,12 @@ const CreateEmployee = () => {
         id={input.name}
         type={type}
         onChange={(event) => onChange(inputFormatted(event))}
-        value={values[input.name]}
+        value={values[input.name] || ""}
       />
     </div>
   );
 
-  const inputDate = (inputData: InputData) => (
+  const inputDate = (inputData: InputData): JSX.Element => (
     <div className="employee-container">
       <label htmlFor={inputData.name} className="create-employee-label">
         {inputData.label}

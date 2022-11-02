@@ -1,0 +1,32 @@
+tbody tr {
+  background-color: #f9f9f9;
+
+  &:hover {
+    background-color: #f6f6f6;
+  }
+}
+
+tbody tr:nth-child(2n) {
+  background-color: #ffffff;
+
+  &:hover {
+    background-color: #f6f6f6;
+  }
+}
+
+td {
+  width: max-content;
+  height: 34px;
+  padding: 8px 10px;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.show-column-sorted {
+  background-color: rgba(241, 241, 241, 0.3);
+}
+
+.no-result {
+  text-align: center;
+  font-weight: bold;
+}

@@ -1,8 +1,8 @@
 export interface Employee {
   firstName: string;
   lastName: string;
-  birthDate: Date | null;
-  startDate: Date | null;
+  birthDate: string;
+  startDate: string;
   street: string;
   city: string;
   zipCode: string | null;

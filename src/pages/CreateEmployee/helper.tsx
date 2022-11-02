@@ -2,12 +2,13 @@ import { Employee, SelectData } from "../../utils/models/employee.interface";
 import React from "react";
 import { SingleValue, StylesConfig } from "react-select";
 import { InputValue } from "../../utils/hooks";
+import dayjs from "dayjs";
 
 export const initialState: Employee = {
   firstName: "",
   lastName: "",
-  birthDate: null,
-  startDate: null,
+  birthDate: "",
+  startDate: "",
   street: "",
   city: "",
   zipCode: null,
@@ -44,3 +45,6 @@ export const selectFormatted = (
   name: inputSelectName || "",
   value: selectData?.value || "",
 });
+
+export const formatDateToString = (value: Date): string =>
+  value ? dayjs(value).format("MM/DD/YYYY") : "";

@@ -1,0 +1,25 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+
+  .actions-table {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+table {
+  border-bottom: 1px solid black;
+  border-spacing: 0;
+}
+
+button {
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
